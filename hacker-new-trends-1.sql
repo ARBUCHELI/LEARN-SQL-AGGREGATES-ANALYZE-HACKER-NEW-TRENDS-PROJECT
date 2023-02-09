@@ -156,11 +156,74 @@ VALUES('The Internet is Missing (2002)', 'djsumdog', 1, '18-oct-2016', 'http://w
 INSERT INTO hacker_news(title, user, score, timestamp, url)
 VALUES(NULL, 'jamescostian', NULL, '01-jun-2017', NULL);*/
 
-SELECT *
+/*SELECT *
 FROM hacker_news;
 
 SELECT title, score
 FROM hacker_news
 ORDER BY score DESC
 LIMIT 5;
+
+SELECT SUM(score)
+FROM hacker_news;
+
+SELECT user, SUM(score)
+FROM hacker_news
+GROUP BY user
+HAVING SUM(score) > 2
+ORDER BY 2 DESC;
+
+SELECT (16) / 30.0;*/
+
+/*SELECT *
+FROM hacker_news;
+
+SELECT title, score
+FROM hacker_news
+ORDER BY score DESC
+LIMIT 5;
+
+SELECT SUM(score)
+FROM hacker_news;*/
+
+/*SELECT user, SUM(score)
+FROM hacker_news
+GROUP BY user
+HAVING SUM(score) > 1
+ORDER BY 2 DESC;
+
+SELECT (2 + 2 + 2 + 2) / 14.0;
+
+INSERT INTO hacker_news(title, user, score, timestamp, url)
+VALUES(NULL, 'sonnynomnom', NULL, '01-jun-2018', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+INSERT INTO hacker_news(title, user, score, timestamp, url)
+VALUES(NULL, 'anferebu', NULL, '01-jun-2019', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+SELECT *
+FROM hacker_news;*/
+
+SELECT user,
+   COUNT(*)
+FROM hacker_news
+WHERE url LIKE '%watch?v=dQw4w9WgXcQ%'
+GROUP BY user
+ORDER BY COUNT(*) DESC;
+
+SELECT *
+FROM hacker_news;
+
+SELECT CASE
+   WHEN url LIKE '%github.com%' THEN 'GitHub'
+   WHEN url LIKE '%medium.com%' THEN 'Medium'
+   WHEN url LIKE '%nytimes.com%' THEN 'New York Times'
+   ELSE 'Other'
+  END AS 'Source',
+  COUNT(*)
+FROM hacker_news
+GROUP BY 1;
+
+
+
+
 
