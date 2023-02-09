@@ -224,6 +224,20 @@ FROM hacker_news
 GROUP BY 1;
 
 
+SELECT timestamp
+FROM hacker_news
+LIMIT 10;
 
+SELECT timestamp,
+   strftime('%H', timestamp)
+FROM hacker_news
+GROUP BY 1
+LIMIT 20;
 
-
+SELECT strftime('%H', timestamp) AS 'Hour', 
+   ROUND(AVG(score), 1) AS 'Average Score', 
+   COUNT(*) AS 'Number of Stories'
+FROM hacker_news
+WHERE timestamp IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
